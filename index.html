@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Acesso</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('28677.jpg'); /* Caminho para a imagem */
+            background-size: cover; /* A imagem cobre toda a tela */
+            background-position: center; /* A imagem é centralizada */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura total da tela */
+            margin: 0;
+        }
+        .container {
+            width: 90%; /* Responsivo */
+            max-width: 400px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .password-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ffc261;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #ffb361;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ffcd71;
+        }
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: white;
+            font-size: 1.5em;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: black;
+        }
+        .modal button {
+            background-color: #ffb361;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .container {
+                padding: 20px;
+            }
+            input[type="password"] {
+                font-size: 1em;
+                padding: 10px;
+            }
+            button {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Portal de Mensagens!</h1>
+        <h2>Digite sua senha:</h2>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Senha" onkeypress="checkEnter(event)" />
+            <span class="eye-icon" onclick="togglePassword()">👁️</span>
+        </div>
+        <button onclick="checkPassword()">Entrar</button>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>Senha incorreta!</h2>
+            <button onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const passwords = {
+                "Marister": "marister2025",
+                "Pedro": "pedro2025",
+                "Camila": "camila2025",
+                "Marquinho": "marquinho2025",
+                "Luan": "luan2025",
+                "Dani": "dani2025",
+                "David": "david2025",
+                "Daniel": "daniel2025",
+                "Larissa": "larissa2025",
+                "Lucas": "lucas2025",
+                "Bryan": "bryan2025",
+                "Will": "will2025",
+                "Solange": "solange2025",
+                "Vandelei": "vandelei2025",
+                "Duda": "duda2025",
+                "Jessika": "jessika2025",
+                "Karen": "karen2025",
+                "Jets": "jets2025",
+                "Patricia": "patricia2025",
+                "Daiane": "daiane2025",
+                "Sr Darci": "srdarci2025",
+                "Neuza": "neuza2025"
+            };
+            const name = Object.keys(passwords).find(name => passwords[name] === password);
+            if (name) {
+                window.location.href = name.toLowerCase() + ".html";
+            } else {
+                openModal();
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        }
+
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+        }
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
