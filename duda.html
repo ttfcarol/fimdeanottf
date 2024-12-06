@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Para Duda</title>
+    <style>
+        /* O mesmo estilo do código anterior... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Olá, Duda!</h1>
+        <button onclick="showMessage()">Abrir Mensagem</button>
+        <div class="paper" id="paperMessage">
+            <div class="message">
+                <p><strong>Duda, o ano de 2025 está chegando!</strong></p>
+                <p>Este é o momento de renovar suas energias, buscar novos caminhos e alcançar todos os seus objetivos. O próximo ano promete ser cheio de conquistas e realizações para você!</p>
+                <p class="countdown" id="countdown"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            const paper = document.getElementById("paperMessage");
+            paper.style.display = "block";
+            startCountdown();
+        }
+
+        function startCountdown() {
+            const countdownElement = document.getElementById("countdown");
+            const targetDate = new Date('January 1, 2025 00:00:00').getTime();
+
+            setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `Faltam ${days}d ${hours}h ${minutes}m ${seconds}s para o Ano Novo!`;
+
+                if (distance < 0) {
+                    clearInterval();
+                    countdownElement.innerHTML = "Feliz Ano Novo! 🎉";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
